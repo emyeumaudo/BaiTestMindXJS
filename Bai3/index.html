@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstati`c.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function genShort(event){
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const short = document.getElementById("short").value;
+            const url = document.getElementById("url").value;
+
+            const data = {email, password, short, url}
+
+            axios.post("/admin/urls/", data).then(response=>{
+                alert("Generated");
+            }).catch(err =>{
+                alert("Failed");
+            })
+
+            // console.log(data);
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Link Shortener</h2>
+        <form onsubmit="genShort(event)">  
+          <div class="form-group">
+            <label for="short">Enter a link:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="short"
+              placeholder="Enter Short URL"
+              name="short"
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="url">Complete URL:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="url"
+              placeholder="Enter Complete URL"
+              name="url"
+            />
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+          <div class="form">
+            <label for="short">Short domain:</label>
+            <button type="submit" class="btn btn-default">Shrtco.de</button>
+            <button type="submit" class="btn btn-default">9qr.de</button>
+            <button type="submit" class="btn btn-default">shiny.link</button>
+          </div>
+        </form>
+    </div>        
+    <script src="main.js" type="module"></script>
+</body>
+</html>
