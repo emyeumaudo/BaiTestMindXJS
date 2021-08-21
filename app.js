@@ -31,4 +31,5 @@ function alternatingSums(a) {
   }
   return [a1, a2];
 }
+console.log("hello");
 console.log(alternatingSums([60, 40, 55, 75, 64]));
